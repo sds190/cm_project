@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <style>
+  body {
+    color: white;
+    background-color: black;
+  }
+
+  img {
+    border: 10px solid white;
+  }
+
+  button {
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  }
+
+  button:hover {
+  background-color: white;
+  color: black;
+  border-color: black;
+  }
+
+  .round {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 50%;
+  }
+
+  .container {
+  position: relative;
+  }
+
+  .container img {
+    width: 500px;
+    height: auto;
+    border: 0px
+  }
+
+  .container .btn {
+    position: absolute;
+    background-color: #EC6433;
+    color: white;
+    font-size: 16px;
+    padding: 20px 10px;
+    border: none;
+    text-align: center;
+    cursor: default;
+  }
+
+  .container .name {
+    top: 30%;
+    left: 10%;
+    border-radius: 50%;
+  }
+
+  .container .fs {
+    top: 35%;
+    left: 35%;
+    border-radius: 12px;
+  }
+
+  .container .eval {
+    top: 35%;
+    left: 58%;
+    border-radius: 12px;
+  }
+
+  .container .save {
+    top: 35%;
+    left: 85%;
+    border-radius: 50%;
+    padding: 20px 15px;
+  }
+
+  .container .blank {
+    top: 70%;
+    left: 46%;
+    border-radius: 12px;
+    padding: 15px 10px;
+  }
+
+  .center{
+    width: 600px;
+    padding: 10px 30px 25px 40px;
+    background-color: white;
+    color: black;
+    border-radius: 12px;
+  }
+
+  .textbox{
+    width: 400px;
+    padding: 10px 30px 25px 40px;
+    background-color: white;
+    color: black;
+    border-radius: 12px;
+  }
+
+  table.d {
+  table-layout: fixed;
+  width: 100%;
+  }
+
+  .cell{
+    padding: 20px 20px 20px 20px;
+    background-color: white;
+    color: black;
+    border-radius: 12px;
+  }
+
+    /* The chcon */
+    .chcon {
+      display: block;
+      position: relative;
+      padding-left: 10px;
+      margin-bottom: 5px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+    .chcon input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+      position: absolute;
+      top: 5px;
+      right: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #ccc;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .chcon:hover input ~ .checkmark {
+      background-color: black;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .chcon input:checked ~ .checkmark {
+      background-color: purple;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .chcon input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .chcon .checkmark:after {
+      left: 9px;
+      top: 5px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+  }
+  </style>
+
+</head>
+<body>
+  <center>
+  <h1>CMにおける製品の印象評価実験</h1>
+
+  <div id="introduction" class="center">
+  <h2>実験概要</h2>
+  <p style="text-align:left">
+    本実験はCMの特徴と製品に対する印象の関係を調べる研究のために行います。<br>
+    実験参加者にCMにおける製品の印象を評価してもらいます。<br>
+    CMは長さが30秒程度であり、80本あります。評価項目は26個あります。<br>
+    1本のCMを見て、全ての項目を評価するためには5分が必要と想定しますので、<br>
+    合計6-7時間が必要となります。<br>
+    ただし、好きな時に休憩を取ることができます。
+  </p>
+  <p>
+    CM動画は本実験のためにしか利用しません</br>
+  </p>
+
+  <button id="agree" onclick="get_ready()"><font size="+2">同意する</font></button>
+  </div>
+
+  <div id="get_ready" class="textbox" style="display:none">
+  <h2>注意</h2>
+  <label class="chcon">画面を最大化にしましたか？
+  <input type="checkbox" id="fscreen">
+  <span class="checkmark"></span>
+  </label>
+  <label class="chcon">音量をオンにしましたか？
+  <input type="checkbox" id="speaker">
+  <span class="checkmark"></span>
+  </label>
+  <label class="chcon">イヤホンをつけましたか？
+  <input type="checkbox" id="earphone">
+  <span class="checkmark"></span>
+  </label>
+
+
+
+  <button onclick="ready()"><font size="+2">準備できました</font></button>
+  </div>
+
+
+  <center>
+  <h2 id="title" style="display:none"> 実験手順 </h2>
+  <table>
+    <tr>
+      <th><button id="prev_btn" class="round" onclick="prev_img()" style="display:none"><font size="+2"><b>＜</b></font></button></th>
+      <th><img id="image" alt="全画面" width="700" height="400" style="display:none"></th>
+      <th><button id="next_btn" class="round" onclick="next_img()" style="display:none"><font size="+2"><b>＞</b></font></button></th>
+    </tr>
+  </table>
+
+<table class="d" style="width:1100px">
+  <tr>
+    <td style="text-align:right">
+      <div id="flow" class="container" style="display:none">
+      <img src="image/button-bg.png" alt="flow button background" width="400">
+      <button id="nameb" class="btn name">名前入力<br>音量調整</button>
+      <button id="fsb" class="btn fs">CMの全画面</button>
+      <button id="evalb" class="btn eval">CMの評価</button>
+      <button id="blankb" class="btn blank">5秒ブランク</button>
+      <button id="saveb" class="btn save">保存</button>
+      </div>
+    </td>
+    <td style="text-align:left"><p id="explanation" style="display:none" class="cell"></p>
+    <button onclick="window.location.href = 'all_finished_last.html'" id="all" style="display:none"> <font size="+2">実験に進む
+    </font></button>
+  </td>
+  </tr>
+</table>
+
+</center>
+
+  <script>
+  var elem = document.documentElement;
+  function openFullscreen(){
+    if(elem.requestFullscreen){
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen){
+      elem.webkitRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+    elem.mozRequestFullScreen();
+    }
+  }
+
+  function get_ready(){
+    var intro = document.getElementById("introduction");
+    intro.style.display = 'none';
+    var get_ready = document.getElementById("get_ready");
+    get_ready.style.display = 'block';
+  }
+
+  function ready(){
+    var speaker = document.getElementById("speaker");
+    var fscreen = document.getElementById("fscreen");
+    var earphone = document.getElementById("earphone");
+    if (speaker.checked == false || fscreen.checked == false || earphone.checked == false){
+      alert("実験のための準備ができていません");
+    }  else {
+      show_img();
+    }
+  }
+
+  images = ["image/name.png","image/volume.png","image/fullscreen.png", "image/evaluation.png", "image/blank.png", "image/saved.png"]
+  exp = ["まずはIDを入力してもらいます。","初めての方は音量を調整し、入力してください。初めてではない方は音量を確認してください","CMを全画面で見ます。<br />この時、動画の一時休止、早送りの操作はできません。<br />"+
+  "CMが終わったら、自動的に評価シートが表示されます。","CMは左上に何回も再生することができます。<br />"+
+  "評価項目は26個あり、全てを評価することが必要です。<br />"+
+  "<h3>スライダーは必ず一回動かしてください。</h3 />" +
+  "回答が終わったら、次のCMを見るには「次へ」のボタンを押してください。<br />"+
+  "CMは80本ありますが、好きな時間に休憩を取ってください。<br />休憩する場合は「保存」のボタンを押してください。",
+  "「次へ」のボタンを押すと、５秒間の黒い画面が表示されます。<br />その後、次のCMを全画面で見て、評価してもらいます。",
+   "「保存」のボタンを押すと、ファイルが保存されて、評価が終わったCM数が表示される。"]
+
+  var i = 0
+
+  function change_color(){
+    var nameb=document.getElementById("nameb");
+    var fsb=document.getElementById("fsb");
+    var evalb=document.getElementById("evalb");
+    var blankb=document.getElementById("blankb");
+    var saveb=document.getElementById("saveb");
+    nameb.style.backgroundColor="";
+    fsb.style.backgroundColor="";
+    evalb.style.backgroundColor="";
+    blankb.style.backgroundColor="";
+    saveb.style.backgroundColor="";
+    if (i==0 || i==1){
+      nameb.style.backgroundColor="purple";
+    } else if(i==2){
+      fsb.style.backgroundColor="purple";
+    } else if (i==3){
+      evalb.style.backgroundColor="purple";
+    } else if (i==4){
+      blankb.style.backgroundColor="purple";
+    } else if (i==5){
+      saveb.style.backgroundColor="purple";
+    }
+  }
+
+  function show_img(){
+    openFullscreen()
+    var get_ready = document.getElementById("get_ready");
+    get_ready.style.display = 'none';
+    change_color()
+    var flow = document.getElementById("flow");
+    flow.style.display = 'block';
+    var title = document.getElementById("title");
+    title.style.display ='block';
+    var image = document.getElementById("image");
+    image.style.display = 'block';
+    image.src = images[i];
+    image.style.border = '10'
+    var explanation = document.getElementById("explanation");
+    explanation.innerHTML = exp[i];
+    explanation.style.display = 'block';
+    var next_btn = document.getElementById("next_btn");
+    next_btn.style.display = 'block';
+    }
+
+  function next_img(){
+    openFullscreen()
+    i++;
+    change_color()
+    var prev_btn = document.getElementById("prev_btn");
+    prev_btn.style.display = 'block';
+    if (i == images.length - 1){
+      var next_btn = document.getElementById("next_btn");
+      next_btn.style.display = 'none';
+      var all = document.getElementById("all");
+      all.style.display ='block';
+    }
+    var image = document.getElementById("image");
+    image.src = images[i];
+    var explanation = document.getElementById("explanation");
+    explanation.innerHTML = exp[i];
+  }
+
+  function prev_img(){
+    openFullscreen()
+    i--;
+    change_color()
+    if (i == 0){
+      var prev_btn = document.getElementById("prev_btn");
+      prev_btn.style.display = 'none';
+    }
+    var next_btn = document.getElementById("next_btn");
+    next_btn.style.display = 'block';
+    var image = document.getElementById("image");
+    image.src = images[i];
+    var explanation = document.getElementById("explanation");
+    explanation.innerHTML = exp[i];
+  }
+  </script>
+</body>
+</html>
