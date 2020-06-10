@@ -413,6 +413,10 @@
       }
 
     var vid = document.getElementById("vid");
+    vid.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    });
+    
     var next = document.getElementById("next");
     var save = document.getElementById("save");
     var i = 0;
@@ -557,6 +561,7 @@
         }
       }
 
+    
       // 3 VALUE INI MUSTI DIUBAH SESUAI INSTRUKSI
       var CLIENT_ID = '514380287820-tbhleigkv9mandjaqgrm3i5065e6g4ks.apps.googleusercontent.com';
       var API_KEY = 'AIzaSyCGXub25ENitujtdMtSscO2sqap0g0neiU';
