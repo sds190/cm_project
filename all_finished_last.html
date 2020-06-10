@@ -614,15 +614,8 @@
 
   </script>
 
-  <script async defer src="https://apis.google.com/js/api.js?onload=onLoadCallback" onload="this.onload=function(){};handleClientLoad()"
+  <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
 
-  <script>
-window.onLoadCallback = function(){
-  gapi.auth2.init({
-      client_id: CLIENT_ID+'.apps.googleusercontent.com'
-    });
-}
-</script>
 </body>
 </html>
