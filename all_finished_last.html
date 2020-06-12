@@ -459,8 +459,14 @@
         if (y==0){
           i++;
           save_file();
-          nextVideo();
-        }  else {
+          if (i==80) {
+              alert("全ての動画を評価してくれました。ありがとうございました！");
+              close_file();
+          }
+          else {
+            nextVideo();
+          }
+        } else {
             alert(y+'個の答えていない項目があります');
           }
       }
