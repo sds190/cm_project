@@ -338,7 +338,9 @@
             console.log(`${numRows} rows retrieved.`);
             // DATA ARRAY NYA ADA DI result.values MISAL MAU DIBACA
             var finished = result.values[2]
-            if (finished!=0) {
+            if (finished == 80) {
+              close_file();
+            } else if (finished!=0) {
                 vol.innerHTML = result.values[4];
                 finished_num.innerHTML = finished;
                 volume_check.style.display='block';
