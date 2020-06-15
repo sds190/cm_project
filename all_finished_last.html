@@ -339,7 +339,7 @@
             // DATA ARRAY NYA ADA DI result.values MISAL MAU DIBACA
             var finished = result.values[2]
             if (finished == numRows-1) {
-              alert("全ての動画を評価してくれました。ありがとうございました！");
+              alert("全ての動画の評価が終わりました。ありがとうございました！");
             } else if (finished!=0) {
                 vol.innerHTML = result.values[4];
                 finished_num.innerHTML = finished;
@@ -431,7 +431,7 @@
       test.pause();
       volume_input.style.display ='none';
       volume_check.style.display='none';
-      alert("実験始まります");
+      alert("実験が始まります");
       openFullscreen()
       setTimeout(function(){
         var all_link = JSON.parse("["+cm_order.innerHTML+"]");
@@ -460,7 +460,7 @@
           i++;
           save_file();
           if (i==80) {
-              alert("全ての動画を評価していただき、ありがとうございました！");
+              alert("全てのCMを評価していただき、ありがとうございました！");
               close_file();
           }
           else {
@@ -564,9 +564,9 @@
         alert("お疲れ様です。ファイルを保存しました")
         var thank = document.getElementById("thank");
         if(left_num!=0){
-          thank.innerHTML="今回は"+finished_num+"本のCMを評価してくれて、ありがとうございます。<br /> 残りの"+left_num+"の評価をお待ちしております";
+          thank.innerHTML="今回は"+finished_num+"本のCMを評価していただき、ありがとうございます。<br /> 残りの"+left_num+"の評価をお待ちしております";
         } else {
-          thank.innerHTML="全てのCMを評価してくれて、ありがとうございました";
+          thank.innerHTML="全てのCMを評価していただき、ありがとうございました";
         }
       }
 
