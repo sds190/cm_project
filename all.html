@@ -159,12 +159,12 @@
   </div>
   </center>
 
-<form id="eval" style="display:none">
+
     <table style="width:700px" id="table" >
       <tr>
         <td>
           <p style="color:#CB472A;"><b><font size="+1"> CMがもたらす製品による体験を想像してください！ </font></b></p>
-            <video id="vid" autoplay src="" width="1400" height="800" controlsList="nodownload" loop></video>
+            <video id="vid" autoplay src="" width="1400" height="800" controlsList="nodownload" loop style="display:none"></video>
             <p>
             7段階評価（０〜６）で評価してください <br>
             0: 想像できない<br>
@@ -179,7 +179,7 @@
               <button id="save" type="submit" onclick="check2()" style="display:none" class="save"><font size="+2">保存</font></button>
             </div>
           </td>
-
+          <form id="eval" style="display:none">
           <td style="text-align:left" style="height:100px">
               <label for="ux1">微笑ましく思う:</label>
               <output  id="ux1_disp" style="color:#CB472A;"></output><br>
@@ -235,7 +235,7 @@
             <br>
           </td>
 
-            <td style="text-align:left" style="height:100px">
+          <td style="text-align:left" style="height:100px">
               <label for="ux14">上手にできる:</label>
               <output  id="ux14_disp" style="color:#CB472A;"></output><br>
               <input type="range" id="ux14" name="ux14" min="0" max="6" value="0" class="slider" oninput="ux14_disp.value = ux14.value">
@@ -288,10 +288,9 @@
               <output  id="extra2_disp" style="color:#CB472A;"></output><br>
               <input type="range" id="extra2" name="extra2" min="0" max="6" value="0" class="slider" oninput="extra2_disp.value = extra2.value">
             </td>
-
+            </form>
           </tr>
         </table>
-        </form>
 
   <center> <p id="thank"><font size="+2"></font></p> </center>
 
